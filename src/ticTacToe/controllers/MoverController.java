@@ -9,13 +9,14 @@ import ticTacToe.views.TableroView;
 import ticTacToe.views.TurnoView;
 
 public class MoverController extends JugadorController {
+	public String accion="MOVER";
 
     public MoverController(Tablero tablero, TableroView tableroView, Turno turno, TurnoView turnoView) {
         super(tablero, tableroView, turno, turnoView);
     }
 
     public void controlar() {
-        turnoView.mostrar("MOVER");
+        turnoView.mostrar(accion);
         Coordenada coordenadaOrigen = new Coordenada();
         CoordenadaView coordenadaOrigenView = new CoordenadaView(coordenadaOrigen,
                 "Introduzca el origen de la ficha a mover");
