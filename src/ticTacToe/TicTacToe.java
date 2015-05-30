@@ -9,6 +9,7 @@ package ticTacToe;
 // Desacoplar Coordenada de TresEnRaya con clase hija
 // X y O no pueden ser parte del modelo, sería vista, y no es operativo!
 
+import ticTacToe.models.Jugador;
 import ticTacToe.models.Tablero;
 import ticTacToe.models.Turno;
 import ticTacToe.views.TableroView;
@@ -23,18 +24,26 @@ class TicTacToe {
     private Turno turno = new Turno();
     private TableroView tableroView = new TableroView(tablero);
     private TurnoView turnoView = new TurnoView(turno);
-    private AbrirController abrirController = new AbrirController(tablero, tableroView);
-    private PonerController ponerController = new PonerController(tablero, tableroView, turno, turnoView);
-    private MoverController moverController = new MoverController(tablero, tableroView, turno, turnoView);
-
+  //  private Jugador[] jugador  = new Jugador[2]; 
+  //private AbrirController abrirController = new AbrirController(tablero,ponerControllers);
+    private AbrirController abrirController = new AbrirController(tablero,tableroView);
+    private PonerController ponerController[] = new PonerController[2];
+    //private MoverController moverController = new MoverController(tablero, tableroView, turno, turnoView);
+    private MoverController moverController[] = new MoverController[2];
     public void jugar() {
-        abrirController.controlar();
+    	ponerController[0] = new PonerController(tablero, tableroView, turno, turnoView);
+    	ponerController[1] = new PonerController(tablero, tableroView, turno, turnoView);
+    	moverController[0] = new MoverController(tablero, tableroView, turno, turnoView);
+    	moverController[1] = new MoverController(tablero, tableroView, turno, turnoView);
+    	abrirController.controlar(ponerController,moverController);
+     //   abrirController.controlar();
+        
         boolean victoria;
         do {
             if (!tablero.completo()) {
-                ponerController.controlar();
+                ponerController[turno.toca()].controlar();
             } else {
-                moverController.controlar();
+                moverController[turno.toca()].controlar();
             }
             victoria = tablero.hayTER(turno.noToca());
             if (!victoria) {

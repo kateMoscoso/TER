@@ -9,7 +9,10 @@ public class AbrirController extends TicTacToeController {
        super(tablero, tableroView);
     }
     
-    public void controlar(){
+    public void controlar(PonerController[] ponerController, MoverController[] moverController){
         tableroView.mostrar();
+    }
+    public void definirJugadores(){
+    	
     }
 }

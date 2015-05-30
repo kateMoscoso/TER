@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class Turno {
 
-    public static final char CRUZ = 'X';
-    public static final char NO_CRUZ = 'O';
-    private char jugador ;
+    public static final int CRUZ = 1;
+    public static final int NO_CRUZ = 0;
+    private  int jugador ;
 
     public Turno (){
     	Random rnd = new Random();
@@ -21,11 +21,11 @@ public class Turno {
         jugador = this.noToca();
     }
 
-    public char toca() {
+    public int toca() {
         return jugador;
     }
 
-    public char noToca() {
+    public int noToca() {
         if (jugador == Turno.CRUZ) {
             return Turno.NO_CRUZ;
         } else {

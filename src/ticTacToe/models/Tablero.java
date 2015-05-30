@@ -41,19 +41,31 @@ public class Tablero {
         return this.ocupado(coordenada,Tablero.VACIA);
     }
 
-    public boolean ocupado(Coordenada coordenada, char ficha) {
-        return this.getFicha(coordenada) == ficha;
+    public boolean ocupado(Coordenada coordenada, int ficha) {
+    	char ficha2 = '-';
+    	if(ficha == 0){
+    		ficha2 = 'X';
+    	}
+    	if(ficha == 1){
+    		ficha2 = 'O';
+    	}
+        return this.getFicha(coordenada) == ficha2;
     }
 
-    public void poner(Coordenada coordenada, char ficha) {
-        fichas[coordenada.getFila()][coordenada.getColumna()] = ficha;
+    public void poner(Coordenada coordenada, int ficha) {
+    	if(ficha ==0)
+        fichas[coordenada.getFila()][coordenada.getColumna()] = 'X';
+    	if(ficha ==1)
+            fichas[coordenada.getFila()][coordenada.getColumna()] = 'O';
+    	if(ficha ==2)
+            fichas[coordenada.getFila()][coordenada.getColumna()] = '-';
     }
 
     public void quitar(Coordenada coordenada) {
-        this.poner(coordenada, Tablero.VACIA);
+        this.poner(coordenada, 2);
     }
 
-    public boolean hayTER(char ficha) {
+    public boolean hayTER(int ficha) {
         boolean hayTER = false;
         // TODO: Codificar algoritmo
         return hayTER;
