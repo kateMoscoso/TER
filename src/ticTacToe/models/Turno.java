@@ -6,7 +6,7 @@ public class Turno {
 
     public static final int CRUZ = 1;
     public static final int NO_CRUZ = 0;
-    private  int jugador ;
+    private  int jugador  = 1;
 
     public Turno (){
     	Random rnd = new Random();

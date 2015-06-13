@@ -1,5 +1,6 @@
 package ticTacToe.controllers;
 
+import ticTacToe.models.Jugador;
 import ticTacToe.models.Tablero;
 import ticTacToe.models.Turno;
 import utils.AceptarDialog;
@@ -10,13 +11,16 @@ import ticTacToe.views.TurnoView;
 
 public class MoverController extends JugadorController {
 	public String accion="MOVER";
+	public Jugador jugador;
 
-    public MoverController(Tablero tablero, TableroView tableroView, Turno turno, TurnoView turnoView) {
-        super(tablero, tableroView, turno, turnoView);
+    public MoverController(Tablero tablero, TableroView tableroView, Turno turno, TurnoView turnoView, Jugador jugador) {
+        super(tablero,  turno);
+        this.jugador = jugador;
+        
     }
 
     public void controlar() {
-        turnoView.mostrar(accion);
+        turnoView.mostrar(accion, jugador.nombre);
         Coordenada coordenadaOrigen = new Coordenada();
         CoordenadaView coordenadaOrigenView = new CoordenadaView(coordenadaOrigen,
                 "Introduzca el origen de la ficha a mover");

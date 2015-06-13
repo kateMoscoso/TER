@@ -20,7 +20,8 @@ public class TurnoViewTester {
     private void mostrarTest() {
         this.init();
         String titulo = "XXXXX";
-        turnoView.mostrar(titulo);
+        String nombre = "Nombre jugador";
+        turnoView.mostrar(titulo, nombre);
         String salida = TurnoView.TITULO_MOSTRAR.replaceAll("#titulo#", titulo).replaceAll(
                 "#ficha#", ""+turno.toca()+"\n");
         assert salida.equals(gestorIOMock.getSalida()) : "No corresponde la salida de mostrar";
