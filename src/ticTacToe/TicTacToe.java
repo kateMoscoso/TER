@@ -37,7 +37,7 @@ class TicTacToe {
     	jugadores[0] = new JugadorController(tablero, turno);
     	jugadores[0].inicializar();
     	jugadores[1] = new JugadorController(tablero, turno);
-    	jugadores[1].inicializar();
+    	jugadores[1].inicializarJugadorAutomatico();
     	ponerController[0] = new PonerController(tablero, tableroView, turno, turnoView, jugadores[0].getJugador() );
     	ponerController[1] = new PonerController(tablero, tableroView, turno, turnoView, jugadores[1].getJugador() );
     	moverController[0] = new MoverController(tablero, tableroView, turno, turnoView, jugadores[0].getJugador() );

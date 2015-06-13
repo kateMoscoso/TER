@@ -4,9 +4,8 @@ public class Jugador {
 	
 	public String nombre;
 	public char ficha;
+	public boolean automatico;
 	
-
-
 	public String getNombre() {
 		return nombre;
 	}
@@ -22,5 +21,15 @@ public class Jugador {
 	public void setFicha(char ficha) {
 		this.ficha = ficha;
 	}
+
+	public boolean isAutomatico() {
+		return automatico;
+	}
+
+	public void setAutomatico(boolean automatico) {
+		this.automatico = automatico;
+	}
+	
+	
 
 }

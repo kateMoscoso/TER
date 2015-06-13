@@ -26,8 +26,13 @@ public class MoverController extends JugadorController {
                 "Introduzca el origen de la ficha a mover");
         boolean correcto;
         do {
+        	if(!jugador.automatico){
             coordenadaOrigenView.recoger();
-            correcto = coordenadaOrigen.valida(Tablero.RANGO);
+           
+        	} else {
+        		coordenadaOrigen = generarCoordenadaMover();
+        	}
+        	 correcto = coordenadaOrigen.valida(Tablero.RANGO);
             if (!correcto) {
                 coordenadaOrigenView.mostrar();
                 AceptarDialog dialogo = new AceptarDialog(" No es una coordenada válida!!!");
@@ -44,11 +49,17 @@ public class MoverController extends JugadorController {
                 }
             }
         } while (!correcto);
+        
         Coordenada coordenadaDestino = new Coordenada();
         CoordenadaView coordenadaDestinoView = new CoordenadaView(coordenadaDestino,
                 "Introduzca el destino de la ficha a mover");
         do {
+        	if(!jugador.automatico){
             coordenadaDestinoView.recoger();
+        	}
+        	else {
+        		coordenadaDestino = generarCoordenadaPoner();
+        	}
             correcto = coordenadaDestino.valida(Tablero.RANGO);
             if (!correcto) {
                 coordenadaDestinoView.mostrar();
@@ -58,12 +69,15 @@ public class MoverController extends JugadorController {
                 tableroView.mostrar();
             } else {
                 correcto = !coordenadaOrigen.iguales(coordenadaDestino);
+                
                 if (!correcto) {
+                	if(!jugador.automatico){
                     coordenadaDestinoView.mostrar();
                     AceptarDialog dialogo = new AceptarDialog(
                             " El origen y destino no pueden ser iguales!!!");
                     dialogo.ejecutar();
                     tableroView.mostrar();
+                	}
                 } else {
                     correcto = tablero.vacio(coordenadaDestino);
                     if (!correcto) {
@@ -80,4 +94,6 @@ public class MoverController extends JugadorController {
         tablero.poner(coordenadaDestino, turno.toca());
         tableroView.mostrar();
     }
+    
+    
 }
