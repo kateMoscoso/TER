@@ -21,4 +21,20 @@ public class TableroView {
             GestorIOFactory.getGestorIO().escribirLinea();
         }
     }
+
+	public boolean nuevaPartida() {
+		boolean valido = false;
+		String resultado ="";
+		do {
+		GestorIOFactory.getGestorIO().escribirLinea("Desea Jugar nueva partida SI o NO");
+		resultado = GestorIOFactory.getGestorIO().leerString("");
+		if(resultado.equals("SI") || resultado.equals("NO"))
+			valido= true;
+		}while(!valido);
+		if(resultado.equals("SI"))
+			return true;
+		if(resultado.equals("NO")) 
+			return false;
+		return false;
+	}
 }

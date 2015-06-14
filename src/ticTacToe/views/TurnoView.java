@@ -17,9 +17,9 @@ public class TurnoView {
 
 	private String tituloConFicha(String titulo){
 		if(turno.toca() == 0)
-			return titulo.replaceAll("#ficha#", ""+'X');
-		else
 			return titulo.replaceAll("#ficha#", ""+'O');
+		else
+			return titulo.replaceAll("#ficha#", ""+'X');
 	}
 
 	public void mostrar(String titulo, String nombre) {
@@ -29,6 +29,7 @@ public class TurnoView {
 	}
 
 	public void victoria() {
+		
 		GestorIOFactory.getGestorIO().escribirLinea(this.tituloConFicha(TurnoView.TITULO_VICTORIA));
 	}
 }

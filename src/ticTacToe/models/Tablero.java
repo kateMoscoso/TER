@@ -53,10 +53,10 @@ public class Tablero {
     }
 
     public void poner(Coordenada coordenada, int ficha) {
-    	if(ficha ==0)
-        fichas[coordenada.getFila()][coordenada.getColumna()] = 'X';
+    	if(ficha == 0)
+        fichas[coordenada.getFila()][coordenada.getColumna()] = 'O';
     	if(ficha ==1)
-            fichas[coordenada.getFila()][coordenada.getColumna()] = 'O';
+            fichas[coordenada.getFila()][coordenada.getColumna()] = 'X';
     	if(ficha ==2)
             fichas[coordenada.getFila()][coordenada.getColumna()] = '-';
     }
@@ -65,11 +65,38 @@ public class Tablero {
         this.poner(coordenada, 2);
     }
 
-    public boolean hayTER(int ficha) {
-        boolean hayTER = false;
-        // TODO: Codificar algoritmo
-        return hayTER;
+    public boolean hayTER(int fichaNum) {
+    	char ficha='X';
+    	if(fichaNum == 0)
+			ficha ='O';
+
+    	if(fichas[0][0]== ficha && fichas[0][1]== ficha  && fichas[0][2]== ficha)
+    		return true;
+    	if(fichas[1][0]== ficha && fichas[1][1]== ficha  && fichas[1][2]== ficha)
+    		return true;
+    	if(fichas[2][0]== ficha && fichas[2][1]== ficha  && fichas[2][2]== ficha)
+    		return true;
+    	if(fichas[0][0]== ficha && fichas[1][0]== ficha  && fichas[2][0]== ficha)
+    		return true;
+    	if(fichas[0][1]== ficha && fichas[1][1]== ficha  && fichas[2][1]== ficha)
+    		return true;
+    	if(fichas[0][2]== ficha && fichas[1][2]== ficha  && fichas[2][2]== ficha)
+    		return true;
+    	if(fichas[0][0]== ficha && fichas[1][1]== ficha  && fichas[2][2]== ficha)
+    		return true;
+    	if(fichas[2][0]== ficha && fichas[1][1]== ficha  && fichas[0][2]== ficha)
+    		return true;
+        return false;
     }
+
+	public void vaciar() {
+		 for (int i = 0; i < Tablero.DIMENSION; i++) {
+	            for (int j = 0; j < Tablero.DIMENSION; j++) {
+	                fichas[i][j] = Tablero.VACIA;
+	            }
+	        }
+		
+	}
 
 }
 
