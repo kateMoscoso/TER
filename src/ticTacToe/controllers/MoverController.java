@@ -13,53 +13,57 @@ public class MoverController extends JugadorController {
 	public String accion="MOVER";
 	public Jugador jugador;
 
+	public int VACIO = 2;
     public MoverController(Tablero tablero, TableroView tableroView, Turno turno, TurnoView turnoView, Jugador jugador) {
-        super(tablero,  turno);
-        this.jugador = jugador;
+        super(tablero,  turno, jugador);
+       
         
     }
 
     public void controlar() {
-        turnoView.mostrar(accion, jugador.nombre);
-        Coordenada coordenadaOrigen = new Coordenada();
-        CoordenadaView coordenadaOrigenView = new CoordenadaView(coordenadaOrigen,
-                "Introduzca el origen de la ficha a mover");
+        turnoView.mostrar(accion, super.jugador.nombre);
+        Coordenada coordenadaOrigen =  escogerCoordenadaOcupadaPor(turno.toca());
+
         boolean correcto;
-        do {
-        	if(!jugador.automatico){
-            coordenadaOrigenView.recoger();
-           
-        	} else {
-        		coordenadaOrigen = generarCoordenadaMover();
-        	}
-        	 correcto = coordenadaOrigen.valida(Tablero.RANGO);
-            if (!correcto) {
-                coordenadaOrigenView.mostrar();
-                AceptarDialog dialogo = new AceptarDialog(" No es una coordenada válida!!!");
-                dialogo.ejecutar();
-                tableroView.mostrar();
-            } else {
-                correcto = tablero.ocupado(coordenadaOrigen, turno.toca());
-                if (!correcto) {
-                    coordenadaOrigenView.mostrar();
-                    AceptarDialog dialogo = new AceptarDialog(
-                            " En esta coordenada no existe una de sus fichas!!!");
-                    dialogo.ejecutar();
-                    tableroView.mostrar();
-                }
-            }
-        } while (!correcto);
+        
+//        do {
+//        	if(!super.jugador.automatico){
+//            coordenadaOrigenView.recoger();
+//           
+//        	} else {
+//        		coordenadaOrigen = obtenerCoordenadaNoOcupadaPor(turno.toca());
+//        	}
+//        	 correcto = coordenadaOrigen.valida(Tablero.RANGO);
+//            if (!correcto) {
+//                coordenadaOrigenView.mostrar();
+//                AceptarDialog dialogo = new AceptarDialog(" No es una coordenada válida!!!");
+//                dialogo.ejecutar();
+//                tableroView.mostrar();
+//            } else {
+//                correcto = tablero.ocupado(coordenadaOrigen, turno.toca());
+//                if (!correcto) {
+//                    coordenadaOrigenView.mostrar();
+//                    AceptarDialog dialogo = new AceptarDialog(
+//                            " En esta coordenada no existe una de sus fichas!!!");
+//                    dialogo.ejecutar();
+//                    tableroView.mostrar();
+//                }
+//            }
+//        } while (!correcto);
         
         Coordenada coordenadaDestino = new Coordenada();
+        System.out.println("Coordenada a mover: " + coordenadaOrigen.toString());
+        
         CoordenadaView coordenadaDestinoView = new CoordenadaView(coordenadaDestino,
                 "Introduzca el destino de la ficha a mover");
         do {
-        	if(!jugador.automatico){
+        	if(!super.jugador.automatico){
             coordenadaDestinoView.recoger();
         	}
         	else {
-        		coordenadaDestino = generarCoordenadaPoner();
+        		coordenadaDestino = obtenerCoordenadaNoOcupadaPor(VACIO);
         	}
+        	System.out.println("Coordenada destino: " + coordenadaDestino.toString());
             correcto = coordenadaDestino.valida(Tablero.RANGO);
             if (!correcto) {
                 coordenadaDestinoView.mostrar();
@@ -70,8 +74,9 @@ public class MoverController extends JugadorController {
             } else {
                 correcto = !coordenadaOrigen.iguales(coordenadaDestino);
                 
+                
                 if (!correcto) {
-                	if(!jugador.automatico){
+                	if(!super.jugador.automatico){
                     coordenadaDestinoView.mostrar();
                     AceptarDialog dialogo = new AceptarDialog(
                             " El origen y destino no pueden ser iguales!!!");
@@ -83,7 +88,7 @@ public class MoverController extends JugadorController {
                     if (!correcto) {
                         coordenadaDestinoView.mostrar();
                         AceptarDialog dialogo = new AceptarDialog(
-                                " Esta coordenada no está vacía!!!");
+                                " Esta coordsenada no está vacía!!!");
                         dialogo.ejecutar();
                         tableroView.mostrar();
                     }

@@ -43,11 +43,16 @@ public class Tablero {
 
     public boolean ocupado(Coordenada coordenada, int ficha) {
     	char ficha2 = '-';
-    	if(ficha == 0){
-    		ficha2 = 'X';
-    	}
+    	
     	if(ficha == 1){
+    		ficha2 = 'X';
+    		System.out.println(ficha + ""
+    				+ " A comparar si coordenada " + coordenada.toString() + " esta ocupada por " + ficha2);
+    	}
+    	if(ficha == 0){
     		ficha2 = 'O';
+    		System.out.println(ficha + ""
+    				+ " A comparar si coordenada " + coordenada.toString() + " esta ocupada por " + ficha2);
     	}
         return this.getFicha(coordenada) == ficha2;
     }

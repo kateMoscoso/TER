@@ -60,4 +60,10 @@ public class Coordenada {
             return Direccion.SIN_DIRECION;
         }
     }
+
+	@Override
+	public String toString() {
+		return "Coordenada [fila=" + fila +1+ ", columna=" + columna+1 + "]";
+	}
+    
 }

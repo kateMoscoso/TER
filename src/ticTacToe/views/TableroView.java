@@ -28,7 +28,7 @@ public class TableroView {
 		do {
 		GestorIOFactory.getGestorIO().escribirLinea("Desea Jugar nueva partida SI o NO");
 		resultado = GestorIOFactory.getGestorIO().leerString("");
-		if(resultado.equals("SI") || resultado.equals("NO"))
+		if(resultado.toUpperCase().equals("SI") || resultado.toUpperCase().equals("NO"))
 			valido= true;
 		}while(!valido);
 		if(resultado.equals("SI"))
