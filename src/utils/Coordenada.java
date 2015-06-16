@@ -63,7 +63,9 @@ public class Coordenada {
 
 	@Override
 	public String toString() {
-		return "Coordenada [fila=" + fila +1+ ", columna=" + columna+1 + "]";
+		return "Coordenada [fila=" + fila + ", columna=" + columna + "]";
 	}
+
     
+
 }

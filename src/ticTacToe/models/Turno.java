@@ -11,7 +11,7 @@ public class Turno {
     public Turno (){
     	Random rnd = new Random();
     	int randomTurn = rnd.nextInt(10); 
-    	if(randomTurn < 50){
+    	if(randomTurn > 4){
     		jugador =Turno.NO_CRUZ;
     	}else {
     		jugador = Turno.CRUZ;

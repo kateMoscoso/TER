@@ -1,13 +1,10 @@
 package ticTacToe.controllers;
 
-import java.util.Random;
 
 import ticTacToe.models.Jugador;
 import ticTacToe.models.Tablero;
 import ticTacToe.models.Turno;
-import utils.AceptarDialog;
 import utils.Coordenada;
-import utils.CoordenadaView;
 import ticTacToe.views.TableroView;
 import ticTacToe.views.TurnoView;
 
